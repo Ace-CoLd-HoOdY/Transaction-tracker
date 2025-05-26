@@ -1,3 +1,5 @@
+transactions = []
+
 def show_menu():
     print("1. Add income")
     print("2. Add expense")
@@ -13,6 +15,7 @@ def add_income():
         add_income()
     else:
         print("Successfully added ",s, "to your account")
+        transactions.append(s)
 
 def add_expense():
     s = int(input("Enter the amount of expense: "))
@@ -22,3 +25,32 @@ def add_expense():
         add_expense()
     else:
         print("Successfully taken away ",s, "to your account")
+        transactions.append(s)
+
+def list_transactions():
+    if len(transactions) == 0:
+        print("No trasactions")
+    else:
+        for i in transactions:
+            if i < 0:
+                print("Expense", i)
+            else:
+                print("Income", i)
+
+
+
+show_menu()
+choice = int(input("Choose what you want: "))
+
+while True:
+    if choice == 1:
+        add_income()
+    elif choice == 2:
+        add_expense()
+    elif choice == 3:
+        list_transactions()
+    elif choice == 4:
+        print("not now")
+    elif choice == 5:
+        print("Get out!")
+        break
